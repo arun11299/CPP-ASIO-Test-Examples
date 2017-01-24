@@ -1,5 +1,6 @@
 #include <ctime>
 #include <iostream>
+#include <iterator>
 #include <fstream>
 #include <string>
 #include <unistd.h>
@@ -79,6 +80,14 @@ private:
             // Extract the newline-delimited message from the buffer.
             std::string line;
             std::istream is(&input_buffer_);
+            std::string copy_str;
+            auto bufs = input_buffer_.data();
+            auto i = bufs.begin();
+            while (i != bufs.end())
+            {
+              boost::asio::const_buffer buf(*i++);
+            }
+
             std::getline(is, line);
 
             // Empty messages are heartbeats and so ignored.
