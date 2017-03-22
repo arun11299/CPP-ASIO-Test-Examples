@@ -28,7 +28,7 @@ public:
         , m_resolver(i_ioService)
         , m_n(i_n)
         , m_traceStart(std::chrono::high_resolution_clock::now())
-        , m_listener(i_ioService, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port_base+m_n))
+        , m_listener(i_ioService, asio::ip::tcp::endpoint(asio::ip::address_v4::from_string("127.0.0.1"), port_base+m_n))
     {}
 
     ~Tester()
